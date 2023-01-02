@@ -10,7 +10,7 @@ const AnimatedLogo = () => {
   const isSmall = useMemo<boolean>(() => ['xs', 'sm'].includes(deviceSize), [deviceSize]);
 
   return (
-    <AnimatePresence mode='sync'>
+    // <AnimatePresence mode='sync'>
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         xmlnsXlink="http://www.w3.org/1999/xlink" 
@@ -360,7 +360,7 @@ const AnimatedLogo = () => {
           </g>
         </AnimatedLogoLetter>
       </svg>
-    </AnimatePresence>
+    // </AnimatePresence>
   )
 }
 

@@ -15,7 +15,6 @@ function App() {
 
   return (
     <AppContainer 
-      animateRoutes
       appName={<TitleLogo />}
       closeAfterRoute
       displayThemeToggle
