@@ -4,7 +4,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useExpansion } from '../hooks/useExpansion';
 import { useMantineUITheme } from '../hooks/useMantineUITheme';
 import { useThemeColors } from '../hooks/useThemeColors';
-import { ExpansionProps } from '../types';
+import { ExpansionProps } from '../theme/types';
 
 type Props = {
   action?: React.ReactNode;

@@ -1,7 +1,7 @@
 import { LoaderProps, MantineColor, MantineGradient, MantineNumberSize, ThemeIcon, ThemeIconVariant, Tooltip } from '@mantine/core';
 import React, { useMemo } from 'react'
 import { useMantineUITheme } from '../hooks/useMantineUITheme';
-import { ThemeColor } from '../types';
+import { ThemeColor } from '../theme/types';
 
 type Props = {
   children: React.ReactNode;

@@ -1,7 +1,7 @@
 import { ActionIcon, ActionIconVariant, LoaderProps, MantineColor, MantineGradient, MantineNumberSize, Tooltip } from '@mantine/core';
 import React, { useMemo } from 'react'
 import { useMantineUITheme } from '../hooks/useMantineUITheme';
-import { ThemeColor } from '../types';
+import { ThemeColor } from '../theme/types';
 import ThemedIcon from './ThemedIcon';
 
 type Props = {

@@ -1,7 +1,7 @@
 import { MantineColor, MantineTheme, useMantineTheme } from "@mantine/core";
 import { useMemo } from "react";
 import { defaultColors } from "../theme/defaults";
-import { Colors } from "../types";
+import { Colors } from "../theme/types";
 import { useMantineUITheme } from "./useMantineUITheme"
 
 const getMantineColor = (theme: MantineTheme, themeColor: MantineColor, index: number): MantineColor => {

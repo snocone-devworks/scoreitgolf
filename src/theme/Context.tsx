@@ -1,6 +1,6 @@
 import { ColorScheme, ColorSchemeProvider, MantineProvider, MantineThemeOverride } from "@mantine/core";
 import { createContext, useEffect, useState } from "react";
-import { ColorConfig, GradientConfig, MantineUIThemeContext, MantineUIThemeProviderProps, NotifyConfig } from "../types";
+import { ColorConfig, GradientConfig, MantineUIThemeContext, MantineUIThemeProviderProps, NotifyConfig } from "./types";
 import { defaultColors, defaultGradients, defaultNotify } from "./defaults";
 import { useDeviceSize } from '../hooks/useDeviceSize';
 import React from "react";

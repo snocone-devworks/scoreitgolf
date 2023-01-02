@@ -1,7 +1,7 @@
 import { Group, GroupPosition, MantineNumberSize, Stack } from '@mantine/core';
 import React, { useMemo } from 'react'
 import { useDeviceSize } from '../hooks/useDeviceSize';
-import { BreakpointName } from '../types';
+import { BreakpointName } from '../theme/types';
 
 type Props = {
   align?: React.CSSProperties['alignItems'];
