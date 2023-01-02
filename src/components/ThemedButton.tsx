@@ -1,7 +1,7 @@
 import { Button, ButtonProps, ButtonVariant, MantineColor, MantineGradient, Tooltip } from '@mantine/core'
 import React, { useMemo } from 'react'
 import { useMantineUITheme } from '../hooks/useMantineUITheme';
-import { ThemeColor } from '../types';
+import { ThemeColor } from '../theme/types';
 
 interface Props extends ButtonProps {
   children: React.ReactNode;

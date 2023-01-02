@@ -1,6 +1,6 @@
 import React from "react";
 import { MdError, MdInfo, MdCheckCircle } from 'react-icons/md';
-import { ColorConfig, GradientConfig, NotifyConfig } from "../types";
+import { ColorConfig, GradientConfig, NotifyConfig } from "./types";
 
 export const defaultColors: ColorConfig = {
   brand: 'cyan',

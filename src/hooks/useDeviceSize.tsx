@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { BreakpointName } from "../types";
+import { BreakpointName } from "../theme/types";
 
 const breakpoints: Record<BreakpointName, number> = {
   'xs': 0,

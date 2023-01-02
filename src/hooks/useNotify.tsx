@@ -3,7 +3,7 @@ import { hideNotification, showNotification, updateNotification } from "@mantine
 import React from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { fixedMessage } from "../theme/defaults";
-import { NotifyType } from "../types";
+import { NotifyType } from "../theme/types";
 import { useMantineUITheme } from "./useMantineUITheme";
 
 export type NotifyReturn = {

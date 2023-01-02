@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import ThemedActionIcon from "../components/ThemedActionIcon";
-import { ExpansionButtonProps, ThemeColor } from "../types";
+import { ExpansionButtonProps, ThemeColor } from "../theme/types";
 
 export const useExpansion = (initialState?: 'collapsed' | 'expanded') => {
   const [expanded, setExpanded] = useState<boolean>(false);
