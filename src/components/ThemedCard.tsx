@@ -109,7 +109,7 @@ const ThemedCard = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                 <ExpandButton                
                   className={typeof props.expansion === 'boolean' ? undefined : props.expansion.className}
                   color={typeof props.expansion === 'boolean' ? 'primary' : props.expansion.color}
-                  iconSize={typeof props.expansion === 'boolean' ? undefined : props.expansion.size}
+                  iconSize={typeof props.expansion === 'boolean' ? undefined : props.expansion.iconSize}
                   radius={typeof props.expansion === 'boolean' ? undefined : props.expansion.radius}
                   size={typeof props.expansion === 'boolean' ? undefined : props.expansion.size}
                   style={typeof props.expansion === 'boolean' ? undefined : props.expansion.style}

@@ -36,7 +36,7 @@ const ThemedIcon = React.forwardRef<HTMLDivElement | null, Props>((props, ref) =
       <ThemeIcon
         ref={ref}
         size={props.size ?? 'md'}
-        radius={props.size ?? 'md'}
+        radius={props.radius ?? 'md'}
         color={variant === 'gradient' ? undefined : color}
         variant={variant}
         style={props.style}
