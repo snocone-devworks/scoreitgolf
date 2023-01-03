@@ -15,11 +15,6 @@ export type NotifyReturn = {
 export const useNotify = () => {
   const themeInfo = useMantineUITheme();
 
-  if (!themeInfo) {
-    throw new Error('useNotify must be within a MantineUIThemeProvider');
-    return;
-  }
-
   const color = (type: NotifyType): MantineColor => {
     if (type === 'error') return themeInfo.colors.error;
     if (type === 'info' || type === 'loading') return themeInfo.colors.info;

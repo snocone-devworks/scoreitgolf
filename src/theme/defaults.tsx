@@ -46,5 +46,5 @@ export const fixedMessage = (message: string) => {
   returnMessage = returnMessage.charAt(0).toUpperCase() + returnMessage.slice(1);
 
   if (!['.', '!', '?'].includes(returnMessage.slice(-1))) returnMessage += '.';
-  return fixedMessage;
+  return returnMessage;
 }
