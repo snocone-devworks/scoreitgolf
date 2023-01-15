@@ -1,63 +1,61 @@
-import { Box, Group, Switch, Text, useMantineTheme } from '@mantine/core';
-import React from 'react'
+import {
+  Box,
+  Button,
+  Group,
+  Switch,
+  Text,
+  useMantineTheme,
+} from '@mantine/core';
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
+import React from 'react';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import { useDeviceSize } from '../../hooks/useDeviceSize';
 import { useMantineUITheme } from '../../hooks/useMantineUITheme';
-import { useThemeColors } from '../../hooks/useThemeColors'
+import { useThemeColors } from '../../hooks/useThemeColors';
+import ThemedActionIcon from '../ThemedActionIcon';
 import { useContainerStyles } from './containerStyles';
 
 const ThemeToggle = () => {
   const { textPrimary } = useThemeColors();
   const { toggleColorScheme } = useMantineUITheme();
-  const { deviceSize } = useDeviceSize();
+  const { isSmall } = useDeviceSize();
   const { classes } = useContainerStyles();
   const theme = useMantineTheme();
-
-  if (['xs', 'sm'].includes(deviceSize)) {
-    return (
-      <Group align='center' style={{gap: '0.4rem'}}>
-        <MdLightMode className={classes.smallIcon} style={{color: theme.colors.yellow[5]}} />
-        <Switch 
-          checked={true}
-          size='md'
-          color={theme.colorScheme === 'dark' ? 'violet' : 'yellow'}
-          styles={{
-            root: {
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }
-          }}
-          style={{transform: theme.colorScheme === 'light' ? 'rotate(180deg)' : undefined}}
-          onClick={() => toggleColorScheme()}
-        />
-        <MdDarkMode className={classes.smallIcon} style={{color: theme.colors.violet[5]}} />
-      </Group>
-    )
-  }
-
   return (
-    <Box
-      sx={{
-        border: theme.colorScheme === 'dark' ? `1px solid #fff` : `1px solid #000`,
-        borderRadius: '1.2rem',
-        display: 'flex',
-        flexDirection: 'row', 
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '0.4rem 0.8rem',
-        cursor: 'pointer'
-      }}
+    <ThemedActionIcon
+      color='textPrimary'
+      radius='xl'
+      size='lg'
+      style={{ marginTop: isSmall ? '1rem' : 0, borderColor: textPrimary }}
+      variant='outline'
       onClick={() => toggleColorScheme()}
     >
-      <Text style={{color: textPrimary}}>
-        {theme.colorScheme === 'dark' ? 'Light Theme' : 'Dark Theme'}
-      </Text>
-      {theme.colorScheme === 'dark' && (<MdLightMode className={classes.icon} />)}
-      {theme.colorScheme === 'light' && (<MdDarkMode className={classes.icon} />)}
-    </Box>
-  )
-}
+      {theme.colorScheme === 'dark' && (
+        <AnimatePresence mode='wait'>
+          <motion.span
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            <MdLightMode className={classes.smallIcon} />
+          </motion.span>
+        </AnimatePresence>
+      )}
+      {theme.colorScheme === 'light' && (
+        <AnimatePresence mode='wait'>
+          <motion.span
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
+            exit={{ y: -20 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            <MdDarkMode className={classes.smallIcon} />
+          </motion.span>
+        </AnimatePresence>
+      )}
+    </ThemedActionIcon>
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;

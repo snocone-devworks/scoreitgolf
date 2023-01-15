@@ -1,24 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import App from './App'
-import { AuthProvider } from './auth/Context'
-import './index.css'
-import { MantineUIThemeProvider } from './theme/Context'
+import { SessionContextProvider } from '@supabase/auth-helpers-react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { supabase } from './api/supabase.client';
+import App from './App';
+import './index.css';
+import { MantineUIThemeProvider } from './theme/Context';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <MantineUIThemeProvider 
-      appThemeName='scoreitgolf_theme' 
-      applyGradients 
-      colors={{ primary: 'teal', info: 'grape'}}
-      notify={{ position: 'bottom-center' }}
+    <MantineUIThemeProvider
+      appThemeName='scoreitgolf_theme'
+      applyGradients
+      notify={{ position: 'top-center' }}
     >
-      <BrowserRouter>
-        <AuthProvider>
+      <SessionContextProvider supabaseClient={supabase}>
+        <BrowserRouter>
           <App />
-        </AuthProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </SessionContextProvider>
     </MantineUIThemeProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

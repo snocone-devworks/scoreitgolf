@@ -25,7 +25,7 @@ export type ExpansionButtonProps = {
   variant?: ActionIconVariant | 'gradient';
 }
 
-export type ThemeColor = 'brand' | 'error' | 'info' | 'primary' | 'secondary' | 'success' | 'textPrimary' | 'warn';
+export type ThemeColor = 'brand' | 'error' | 'info' | 'primary' | 'secondary' | 'success' | 'textPrimary' | 'textDimmed' | 'warn';
 export type ThemeGradient = 'brand' | 'error' | 'info' | 'primary' | 'secondary' | 'success' | 'warn';
 export type NotifyType = 'error' | 'info' | 'loading' | 'success';
 export type NotifyPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
