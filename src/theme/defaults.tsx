@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import { MdError, MdInfo, MdCheckCircle } from 'react-icons/md';
-import { ColorConfig, GradientConfig, NotifyConfig } from "./types";
+import { ColorConfig, GradientConfig, NotifyConfig } from './types';
 
 export const defaultColors: ColorConfig = {
   brand: 'cyan',
@@ -10,7 +10,8 @@ export const defaultColors: ColorConfig = {
   secondary: 'pink',
   success: 'teal',
   warn: 'yellow',
-  textPrimary: 'black'
+  textPrimary: 'black',
+  textDimmed: 'black',
 };
 
 export const defaultGradients: GradientConfig = {
@@ -21,8 +22,9 @@ export const defaultGradients: GradientConfig = {
   secondary: { from: 'pink', to: 'violet' },
   success: { from: 'cyan', to: 'green' },
   warn: { from: 'pink', to: 'yellow' },
-  textPrimary: { from: 'black', to: 'black' }
-}
+  textPrimary: { from: 'black', to: 'black' },
+  textDimmed: { from: 'black', to: 'black' },
+};
 
 export const defaultNotify: NotifyConfig = {
   autoClose: 5000,
@@ -31,20 +33,22 @@ export const defaultNotify: NotifyConfig = {
   icons: {
     error: <MdError />,
     info: <MdInfo />,
-    success: <MdCheckCircle />
+    success: <MdCheckCircle />,
   },
   messageWrappers: {
-    error: (message: string) => `${fixedMessage(message)}. If issue persists please contact support.`,
+    error: (message: string) =>
+      `${fixedMessage(message)}. If issue persists please contact support.`,
     info: (message: string) => `${fixedMessage(message)}`,
     loading: (message: string) => `${fixedMessage(message)}`,
-    success: (message: string) => `${fixedMessage(message)}`
-  }
-}
+    success: (message: string) => `${fixedMessage(message)}`,
+  },
+};
 
 export const fixedMessage = (message: string) => {
   let returnMessage: string = message.trim();
-  returnMessage = returnMessage.charAt(0).toUpperCase() + returnMessage.slice(1);
+  returnMessage =
+    returnMessage.charAt(0).toUpperCase() + returnMessage.slice(1);
 
   if (!['.', '!', '?'].includes(returnMessage.slice(-1))) returnMessage += '.';
   return returnMessage;
-}
+};
