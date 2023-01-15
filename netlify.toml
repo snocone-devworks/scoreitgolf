@@ -4,7 +4,7 @@
 
 [build]
   publish = "dist"
-  command = "npx pnpm i --store=node_modules/.pnpm-store --auto-install-peers=true && npx pnpm run build"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
