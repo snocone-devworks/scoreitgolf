@@ -7,10 +7,6 @@ import App from './App';
 import './index.css';
 import { MantineUIThemeProvider } from './theme/Context';
 
-import { registerSW } from 'virtual:pwa-register';
-
-registerSW({ immediate: true });
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <MantineUIThemeProvider
