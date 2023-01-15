@@ -9,180 +9,120 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      Courses: {
+      courses: {
         Row: {
-          city: string | null
+          city: string
           id: number
-          name: string | null
-          phone: string | null
-          state: string | null
-          street: string | null
-          zip: string | null
+          name: string
+          state: string
+          street: string
+          zip: string
         }
         Insert: {
-          city?: string | null
+          city: string
           id?: number
-          name?: string | null
-          phone?: string | null
-          state?: string | null
-          street?: string | null
-          zip?: string | null
+          name: string
+          state: string
+          street: string
+          zip: string
         }
         Update: {
-          city?: string | null
+          city?: string
           id?: number
-          name?: string | null
-          phone?: string | null
-          state?: string | null
-          street?: string | null
-          zip?: string | null
+          name?: string
+          state?: string
+          street?: string
+          zip?: string
         }
       }
-      Holes: {
+      holes: {
         Row: {
-          handicap: number | null
+          handicap: number
           id: number
-          number: number | null
-          par: number | null
-          teeId: number | null
-          yardage: number | null
+          number: number
+          par: number
+          teeId: number
+          yardage: number
         }
         Insert: {
-          handicap?: number | null
+          handicap: number
           id?: number
-          number?: number | null
-          par?: number | null
-          teeId?: number | null
-          yardage?: number | null
+          number: number
+          par: number
+          teeId: number
+          yardage: number
         }
         Update: {
-          handicap?: number | null
+          handicap?: number
           id?: number
-          number?: number | null
-          par?: number | null
-          teeId?: number | null
-          yardage?: number | null
+          number?: number
+          par?: number
+          teeId?: number
+          yardage?: number
         }
       }
-      Leagues: {
+      profiles: {
         Row: {
-          courseId: number | null
-          id: number
-          iterationGapDays: number | null
-          iterations: number | null
-          name: string | null
-          startDate: string | null
+          avatar_url: string | null
+          fts: unknown | null
+          full_name: string | null
+          handicap_index: number | null
+          id: string
+          preferred_course_id: number | null
+          preferred_tee_id: number | null
+          updated_at: string | null
+          username: string | null
+          website: string | null
         }
         Insert: {
-          courseId?: number | null
-          id?: number
-          iterationGapDays?: number | null
-          iterations?: number | null
-          name?: string | null
-          startDate?: string | null
+          avatar_url?: string | null
+          fts?: unknown | null
+          full_name?: string | null
+          handicap_index?: number | null
+          id: string
+          preferred_course_id?: number | null
+          preferred_tee_id?: number | null
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
         }
         Update: {
-          courseId?: number | null
-          id?: number
-          iterationGapDays?: number | null
-          iterations?: number | null
-          name?: string | null
-          startDate?: string | null
+          avatar_url?: string | null
+          fts?: unknown | null
+          full_name?: string | null
+          handicap_index?: number | null
+          id?: string
+          preferred_course_id?: number | null
+          preferred_tee_id?: number | null
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
         }
       }
-      Matches: {
-        Row: {
-          complete: boolean | null
-          id: number
-          iteration: number | null
-          leagueId: number | null
-          linkCode: string | null
-        }
-        Insert: {
-          complete?: boolean | null
-          id?: number
-          iteration?: number | null
-          leagueId?: number | null
-          linkCode?: string | null
-        }
-        Update: {
-          complete?: boolean | null
-          id?: number
-          iteration?: number | null
-          leagueId?: number | null
-          linkCode?: string | null
-        }
-      }
-      PlayerMatches: {
-        Row: {
-          id: number
-          matchId: number | null
-          playerId: number | null
-          teamNumber: number | null
-        }
-        Insert: {
-          id?: number
-          matchId?: number | null
-          playerId?: number | null
-          teamNumber?: number | null
-        }
-        Update: {
-          id?: number
-          matchId?: number | null
-          playerId?: number | null
-          teamNumber?: number | null
-        }
-      }
-      Players: {
-        Row: {
-          handicap: number | null
-          id: number
-          name: string | null
-          teeId: number | null
-          userId: string | null
-          phoneNumber: string | null
-        }
-        Insert: {
-          handicap?: number | null
-          id?: number
-          name?: string | null
-          teeId?: number | null
-          userId?: string | null
-          phoneNumber?: string | null
-        }
-        Update: {
-          handicap?: number | null
-          id?: number
-          name?: string | null
-          teeId?: number | null
-          userId?: string | null
-          phoneNumber?: string | null
-        }
-      }
-      Tees: {
+      tees: {
         Row: {
           color: string | null
-          courseId: number | null
+          courseId: number
           id: number
-          name: string | null
-          rating: number | null
-          slope: number | null
+          name: string
+          rating: number
+          slope: number
         }
         Insert: {
           color?: string | null
-          courseId?: number | null
+          courseId: number
           id?: number
-          name?: string | null
-          rating?: number | null
-          slope?: number | null
+          name: string
+          rating: number
+          slope: number
         }
         Update: {
           color?: string | null
-          courseId?: number | null
+          courseId?: number
           id?: number
-          name?: string | null
-          rating?: number | null
-          slope?: number | null
+          name?: string
+          rating?: number
+          slope?: number
         }
       }
     }

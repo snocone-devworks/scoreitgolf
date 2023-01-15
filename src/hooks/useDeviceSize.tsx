@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
-import { BreakpointName } from "../theme/types";
+import { useEffect, useMemo, useState } from 'react';
+import { BreakpointName } from '../theme/types';
 
 const breakpoints: Record<BreakpointName, number> = {
-  'xs': 0,
-  'sm': 576,
-  'md': 768,
-  'lg': 992,
-  'xl': 1200
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
 };
 
 export const useDeviceSize = () => {
@@ -18,7 +18,14 @@ export const useDeviceSize = () => {
     if (width >= breakpoints.md) return 'md';
     if (width >= breakpoints.sm) return 'sm';
     return 'xs';
-  }, [width])
+  }, [width]);
+
+  const isSmall = useMemo<boolean>(
+    () => ['xs', 'sm'].includes(deviceSize),
+    [deviceSize]
+  );
+
+  const isMedium = useMemo<boolean>(() => deviceSize === 'md', [deviceSize]);
 
   useEffect(() => {
     function handleResize() {
@@ -30,8 +37,7 @@ export const useDeviceSize = () => {
     setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [])
+  }, []);
 
-  return { deviceSize, height, width };
-}
-
+  return { deviceSize, height, isSmall, isMedium, width };
+};

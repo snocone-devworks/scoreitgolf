@@ -31,8 +31,9 @@ export const useContainerStyles = createStyles((theme) => {
       backgroundColor: 'transparent',
     },
     smallIcon: {
-      height: '1.8rem',
-      width: '1.8rem',
+      height: '1.2rem',
+      width: '1.2rem',
+      color: theme.colorScheme === 'dark' ? theme.colors.yellow[5] : theme.colors.teal[5]
     },
     icon: {
       height: '1.2rem',

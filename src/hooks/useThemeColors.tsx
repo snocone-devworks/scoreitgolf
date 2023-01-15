@@ -1,10 +1,14 @@
-import { MantineColor, MantineTheme, useMantineTheme } from "@mantine/core";
-import { useMemo } from "react";
-import { defaultColors } from "../theme/defaults";
-import { Colors } from "../theme/types";
-import { useMantineUITheme } from "./useMantineUITheme"
+import { MantineColor, MantineTheme, useMantineTheme } from '@mantine/core';
+import { useMemo } from 'react';
+import { defaultColors } from '../theme/defaults';
+import { Colors } from '../theme/types';
+import { useMantineUITheme } from './useMantineUITheme';
 
-const getMantineColor = (theme: MantineTheme, themeColor: MantineColor, index: number): MantineColor => {
+const getMantineColor = (
+  theme: MantineTheme,
+  themeColor: MantineColor,
+  index: number
+): MantineColor => {
   if (themeColor === 'blue') return theme.colors.blue[index];
   if (themeColor === 'red') return theme.colors.red[index];
   if (themeColor === 'cyan') return theme.colors.cyan[index];
@@ -21,14 +25,14 @@ const getMantineColor = (theme: MantineTheme, themeColor: MantineColor, index: n
   if (themeColor === 'yellow') return theme.colors.yellow[index];
 
   return theme.colors.blue[index];
-}
+};
 
 export const useThemeColors = () => {
   const theme = useMantineTheme();
   const uiTheme = useMantineUITheme();
   const colors = useMemo<Colors>(() => {
-    if (!uiTheme) return {...defaultColors};
-    if (!theme) return {...defaultColors};
+    if (!uiTheme) return { ...defaultColors };
+    if (!theme) return { ...defaultColors };
 
     const index = theme.colorScheme === 'dark' ? 5 : 7;
 
@@ -39,14 +43,21 @@ export const useThemeColors = () => {
       primary: getMantineColor(theme, uiTheme.colors.primary, index),
       secondary: getMantineColor(theme, uiTheme.colors.secondary, index),
       success: getMantineColor(theme, uiTheme.colors.success, index),
+      textDimmed:
+        theme.colorScheme === 'dark'
+          ? theme.colors.gray[4]
+          : theme.colors.dark[4],
       textPrimary: theme.colorScheme === 'dark' ? theme.white : theme.black,
       warn: getMantineColor(theme, uiTheme.colors.warn, index),
-    }
+    };
 
     return returnItem;
   }, [theme, uiTheme]);
 
-  if (!uiTheme) throw new Error('useThemeColors must be used within a MantineUIThemeProvider');
+  if (!uiTheme)
+    throw new Error(
+      'useThemeColors must be used within a MantineUIThemeProvider'
+    );
 
   return colors;
-}
+};
