@@ -74,7 +74,7 @@ const AccountDetailsPage = () => {
           style={{
             position: 'relative',
             marginTop: '-4rem',
-            marginBottom: '1rem',
+            paddingBottom: '1rem',
           }}
         >
           <div style={{ position: 'relative' }}>
