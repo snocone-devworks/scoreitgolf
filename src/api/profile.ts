@@ -12,6 +12,7 @@ type ProfilesApi = {
   searchProfiles(term: string): Promise<ProfileRow[]>;
   updateAvatar(file: File): Promise<void>;
   updateProfile(value: ProfileUpdate): Promise<void>;
+  validateUsername(value: string, excludedId: string): Promise<boolean>;
 }
 
 export const useProfilesApi = create<ProfilesApi>()(
@@ -90,6 +91,23 @@ export const useProfilesApi = create<ProfilesApi>()(
         } catch (error) {
           return Promise.reject(error);
         }    
+      },
+
+      validateUsername: async (value: string, excludedId: string): Promise<boolean> => {
+        try {
+          let fixedValue: string = value.trim().toLocaleLowerCase();
+          const { count, error } = await supabase
+            .from('profiles')
+            .select('*', { count: 'exact', head: true })
+            .eq('username_lower', fixedValue)
+            .neq('id', excludedId)
+
+          if (error) throw error;
+          if (!count) return Promise.resolve(false);
+          return Promise.resolve(count > 0);
+        } catch (error) {
+          return Promise.reject(error);
+        }
       }
     }),
     { name: 'Profiles' }

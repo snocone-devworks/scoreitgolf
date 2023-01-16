@@ -26,7 +26,7 @@ const ThemeToggle = () => {
       color='textPrimary'
       radius='xl'
       size='lg'
-      style={{ marginTop: isSmall ? '1rem' : 0, borderColor: textPrimary }}
+      style={{ marginTop: isSmall ? '0.6rem' : 0, borderColor: textPrimary }}
       variant='outline'
       onClick={() => toggleColorScheme()}
     >

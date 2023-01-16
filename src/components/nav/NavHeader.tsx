@@ -70,7 +70,7 @@ const NavHeader = (props: Props) => {
           />
         )}
         {props.logo}
-        {props.appName && !isSmall && (
+        {props.appName && (
           <Center>
             <Title order={2} style={{ marginLeft: '1rem' }}>
               {props.appName}

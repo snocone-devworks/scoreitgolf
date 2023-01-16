@@ -72,6 +72,7 @@ export interface Database {
           preferred_tee_id: number | null
           updated_at: string | null
           username: string | null
+          username_lower: string | null
           website: string | null
         }
         Insert: {
@@ -84,6 +85,7 @@ export interface Database {
           preferred_tee_id?: number | null
           updated_at?: string | null
           username?: string | null
+          username_lower?: string | null
           website?: string | null
         }
         Update: {
@@ -96,6 +98,7 @@ export interface Database {
           preferred_tee_id?: number | null
           updated_at?: string | null
           username?: string | null
+          username_lower?: string | null
           website?: string | null
         }
       }
