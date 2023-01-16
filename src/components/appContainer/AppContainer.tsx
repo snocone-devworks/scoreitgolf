@@ -39,7 +39,6 @@ const AppContainer = (props: AppContainerProps) => {
       height: '100vh',
       justifyContent: 'space-between',
       width: '100%',
-      overflowBehavior: 'auto',
       backgroundColor:
         theme.colorScheme === 'dark'
           ? theme.colors.dark[8]
@@ -111,6 +110,7 @@ const AppContainer = (props: AppContainerProps) => {
               flex: '1 1 auto',
               overflowY: 'auto',
               padding: '1rem',
+              overscrollBehavior: 'auto'
             }}
           >
             {props.children}
@@ -127,6 +127,7 @@ const AppContainer = (props: AppContainerProps) => {
             flex: '1 1 auto',
             overflowY: 'auto',
             padding: '1rem',
+            overscrollBehavior: 'auto'
           }}
         >
           {props.children}
