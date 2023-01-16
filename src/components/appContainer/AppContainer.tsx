@@ -39,6 +39,7 @@ const AppContainer = (props: AppContainerProps) => {
       height: '100vh',
       justifyContent: 'space-between',
       width: '100%',
+      overflowBehavior: 'auto',
       backgroundColor:
         theme.colorScheme === 'dark'
           ? theme.colors.dark[8]
