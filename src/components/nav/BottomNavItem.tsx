@@ -66,6 +66,7 @@ const BottomNavItem = ({
         color: isActive ? colors.info : colors.textPrimary,
         cursor: 'pointer',
         zIndex: 1,
+        paddingBottom: '0.4rem',
         paddingTop: '0.8rem',
         flex: disableFlex ? 0 : 1,
       }}
