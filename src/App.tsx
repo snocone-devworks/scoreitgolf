@@ -26,7 +26,7 @@ function App() {
   const loadProfile = useProfilesApi((state) => state.loadProfile);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { deviceSize } = useDeviceSize();
+  const { isSmall } = useDeviceSize();
 
   useEffect(() => {
     if (user && session) loadProfile(user, session);
@@ -40,26 +40,15 @@ function App() {
 
   return (
     <AppContainer
-      appName={pathname !== '/' ? <TitleLogo /> : undefined}
+      appName={
+        pathname === '/' ? undefined : isSmall ? (
+          <SLogo height={36} width={36} />
+        ) : (
+          <TitleLogo />
+        )
+      }
       closeAfterRoute
       displayThemeToggle
-      headerContent={
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            flex: '1 1 auto',
-            alignItems: 'center',
-            justifyContent: ['xs', 'sm'].includes(deviceSize)
-              ? 'space-between'
-              : 'flex-end',
-          }}
-        >
-          {['xs', 'sm'].includes(deviceSize) && pathname !== '/' && (
-            <SLogo height={36} width={36} />
-          )}
-        </div>
-      }
       navbarContent={<NavList />}
     >
       <Routes>

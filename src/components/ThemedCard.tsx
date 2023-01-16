@@ -1,6 +1,16 @@
-import { Card, Group, GroupPosition, MantineNumberSize, MantineShadow, Stack, Text, Title, useMantineTheme } from '@mantine/core';
+import {
+  Card,
+  Group,
+  GroupPosition,
+  MantineNumberSize,
+  MantineShadow,
+  Stack,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react';
 import { useExpansion } from '../hooks/useExpansion';
 import { useMantineUITheme } from '../hooks/useMantineUITheme';
 import { useThemeColors } from '../hooks/useThemeColors';
@@ -14,8 +24,9 @@ type Props = {
   radius?: MantineNumberSize;
   subtitle?: React.ReactNode;
   title?: React.ReactNode;
+  headerStyle?: React.CSSProperties;
   style?: React.CSSProperties;
-}
+};
 
 const shadows: MantineShadow[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -24,10 +35,12 @@ const ThemedCard = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const theme = useMantineTheme();
   const initialExpandedState = useMemo<'collapsed' | 'expanded'>(() => {
     if (!props.expansion) return 'expanded';
-    if (typeof props.expansion === 'boolean') return props.expansion === true ? 'expanded' : 'collapsed';
+    if (typeof props.expansion === 'boolean')
+      return props.expansion === true ? 'expanded' : 'collapsed';
     return props.expansion.initialState ? 'expanded' : 'collapsed';
-  }, [props.expansion])
-  const { expanded, setExpanded, hasChanged, ExpandButton } = useExpansion(initialExpandedState);
+  }, [props.expansion]);
+  const { expanded, setExpanded, hasChanged, ExpandButton } =
+    useExpansion(initialExpandedState);
   const { applyGradients } = useMantineUITheme();
   const headerPosition = useMemo<GroupPosition>(() => {
     if (props.subtitle || props.title) {
@@ -35,10 +48,49 @@ const ThemedCard = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     }
 
     return props.action || props.expansion ? 'right' : 'apart';
-  }, [props.action, props.subtitle, props.title, props.expansion])
+  }, [props.action, props.subtitle, props.title, props.expansion]);
+  const border = useMemo<React.CSSProperties['border']>(() => {
+    const styleBorder = props.style?.border;
+    const themeColor =
+      theme.colorScheme === 'dark' ? theme.colors.dark : theme.colors.gray;
+
+    if (props.elevation === 0) {
+      return (
+        styleBorder ??
+        `1px solid ${themeColor[theme.colorScheme === 'dark' ? 6 : 8]}`
+      );
+    }
+
+    if (props.elevation === 2) {
+      return (
+        styleBorder ??
+        `1px solid ${themeColor[theme.colorScheme === 'dark' ? 6 : 8]}`
+      );
+    }
+
+    if (props.elevation === 3) {
+      return (
+        styleBorder ??
+        `1px solid ${themeColor[theme.colorScheme === 'dark' ? 6 : 8]}`
+      );
+    }
+
+    if (props.elevation === 4) {
+      return (
+        styleBorder ??
+        `1px solid ${themeColor[theme.colorScheme === 'dark' ? 6 : 8]}`
+      );
+    }
+
+    return (
+      styleBorder ??
+      `1px solid ${themeColor[theme.colorScheme === 'dark' ? 6 : 3]}`
+    );
+  }, [props.elevation, props.style, theme]);
   const backgroundColor = useMemo<string>(() => {
     const styleColor = props.style?.backgroundColor;
-    const themeColor = theme.colorScheme === 'dark' ? theme.colors.dark : theme.colors.gray;
+    const themeColor =
+      theme.colorScheme === 'dark' ? theme.colors.dark : theme.colors.gray;
 
     if (props.elevation === 0) {
       return styleColor ?? themeColor[theme.colorScheme === 'dark' ? 8 : 0];
@@ -56,64 +108,103 @@ const ThemedCard = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       return styleColor ?? themeColor[theme.colorScheme === 'dark' ? 4 : 0];
     }
 
-    return styleColor ?? theme.colorScheme === 'dark' ? themeColor[7] : theme.white;
-  }, [props.elevation, theme, props.style])
+    return styleColor ?? theme.colorScheme === 'dark'
+      ? themeColor[7]
+      : theme.white;
+  }, [props.elevation, theme, props.style]);
 
   useEffect(() => {
     if (typeof props.expansion === 'boolean' || hasChanged) return;
-    if (props.expansion?.initialState !== undefined) setExpanded(props.expansion.initialState === 'expanded');
-  }, [props.expansion])
+    if (props.expansion?.initialState !== undefined)
+      setExpanded(props.expansion.initialState === 'expanded');
+  }, [props.expansion]);
 
   return (
     <Card
       ref={ref}
       shadow={shadows[props.elevation ?? 0]}
       radius={props.radius}
-      style={props.style ? {...props.style, backgroundColor: backgroundColor} : { width: '100%', backgroundColor: backgroundColor}}
+      style={
+        props.style
+          ? {
+              ...props.style,
+              backgroundColor: backgroundColor,
+              borderRadius: '0.8rem',
+              border: border,
+            }
+          : {
+              width: '100%',
+              backgroundColor: backgroundColor,
+              borderRadius: '0.8rem',
+              border: border,
+            }
+      }
     >
       {(props.title || props.subtitle || props.action || props.expansion) && (
         <Group
           align='flex-start'
           position={headerPosition}
           noWrap
-          style={{gap: '0.2rem'}}
+          style={
+            props.headerStyle
+              ? { ...props.headerStyle, gap: '0.2rem' }
+              : { gap: '0.2rem' }
+          }
         >
           {(props.title || props.subtitle) && (
-            <Stack style={{gap: '0.2rem', flexWrap: 'wrap'}}>
+            <Stack style={{ gap: '0.2rem', flexWrap: 'wrap' }}>
               {typeof props.title === 'string' && (
-                <Title order={4} style={{color: primary}}>
+                <Title order={4} style={{ color: primary }}>
                   {props.title}
                 </Title>
               )}
-              {typeof props.title !== 'string' && (
-                <>
-                {props.title}
-                </>
-              )}
+              {typeof props.title !== 'string' && <>{props.title}</>}
               {typeof props.subtitle === 'string' && (
-                <Text size='sm'>
-                  {props.subtitle}
-                </Text>
+                <Text size='sm'>{props.subtitle}</Text>
               )}
-              {typeof props.subtitle !== 'string' && (
-                <>
-                {props.subtitle}
-                </>
-              )}
+              {typeof props.subtitle !== 'string' && <>{props.subtitle}</>}
             </Stack>
           )}
           {(props.action || props.expansion) && (
-            <Group style={{gap: '0.2rem'}}>
+            <Group style={{ gap: '0.2rem' }}>
               {props.action}
               {props.expansion && (
-                <ExpandButton                
-                  className={typeof props.expansion === 'boolean' ? undefined : props.expansion.className}
-                  color={typeof props.expansion === 'boolean' ? 'primary' : props.expansion.color}
-                  iconSize={typeof props.expansion === 'boolean' ? undefined : props.expansion.iconSize}
-                  radius={typeof props.expansion === 'boolean' ? undefined : props.expansion.radius}
-                  size={typeof props.expansion === 'boolean' ? undefined : props.expansion.size}
-                  style={typeof props.expansion === 'boolean' ? undefined : props.expansion.style}
-                  variant={typeof props.expansion === 'boolean' ? undefined : props.expansion.variant}
+                <ExpandButton
+                  className={
+                    typeof props.expansion === 'boolean'
+                      ? undefined
+                      : props.expansion.className
+                  }
+                  color={
+                    typeof props.expansion === 'boolean'
+                      ? 'primary'
+                      : props.expansion.color
+                  }
+                  iconSize={
+                    typeof props.expansion === 'boolean'
+                      ? undefined
+                      : props.expansion.iconSize
+                  }
+                  radius={
+                    typeof props.expansion === 'boolean'
+                      ? undefined
+                      : props.expansion.radius
+                  }
+                  size={
+                    typeof props.expansion === 'boolean'
+                      ? undefined
+                      : props.expansion.size
+                  }
+                  style={
+                    typeof props.expansion === 'boolean'
+                      ? undefined
+                      : props.expansion.style
+                  }
+                  variant={
+                    typeof props.expansion === 'boolean'
+                      ? undefined
+                      : props.expansion.variant
+                  }
                 />
               )}
             </Group>
@@ -123,22 +214,18 @@ const ThemedCard = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       <AnimatePresence mode='sync'>
         <motion.div
           key={String(expanded)}
-          initial={{ opacity: 0, height: 0}}
+          initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.4 }}
         >
-          {(!props.expansion || expanded) && (
-            <>
-            {props.children}
-            </>
-          )}
+          {(!props.expansion || expanded) && <>{props.children}</>}
         </motion.div>
       </AnimatePresence>
     </Card>
-  )
+  );
 });
 
 ThemedCard.displayName = 'ThemedCard';
 
-export default ThemedCard
+export default ThemedCard;

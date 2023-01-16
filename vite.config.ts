@@ -13,7 +13,7 @@ export default defineConfig({
         name: 'Score It Golf',
         short_name: 'Score It',
         description: 'Real time golf scoring application',
-        theme_color: '#1d1b30',
+        theme_color: '#1D1B26',
         icons: [
           {
             src: 'pwa-192x192.png',

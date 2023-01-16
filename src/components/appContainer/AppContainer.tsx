@@ -91,7 +91,7 @@ const AppContainer = (props: AppContainerProps) => {
         />
       )}
       {['xs', 'sm'].includes(deviceSize) && (
-        <NavHeader displayThemeToggle hideMenuButton />
+        <NavHeader displayThemeToggle hideMenuButton appName={props.appName} />
       )}
       {props.animateRoutes && (
         <AnimatePresence mode={motionConfig.mode}>
